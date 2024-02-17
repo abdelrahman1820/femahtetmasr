@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomActionButton extends StatelessWidget {
-  const CustomActionButton({
-    super.key,
-    this.controller,
-    required this.centertitle,
-    required this.onTap,
-  });
+  const CustomActionButton(
+      {super.key,
+      this.controller,
+      required this.centertitle,
+      required this.onTap,
+      this.icon = const SizedBox()});
 
   final PageController? controller;
   final String centertitle;
   final void Function() onTap;
+  final Widget icon;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -22,9 +23,15 @@ class CustomActionButton extends StatelessWidget {
             color: const Color(0xff00343D),
             borderRadius: BorderRadius.circular(11)),
         child: Center(
-            child: Text(
-          centertitle,
-          style: const TextStyle(color: Colors.white, fontSize: 16),
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            icon,
+            Text(
+              centertitle,
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ],
         )),
       ),
     );
